@@ -29,7 +29,8 @@ namespace Rabbit.Rpc.ProxyGenerator.Utilitys
             {
                 "System.Runtime",
                 "mscorlib",
-                "System.Threading.Tasks"
+                "System.Threading.Tasks",
+                "System.Collections"
             };
             references = assemblys.Select(i => MetadataReference.CreateFromFile(Assembly.Load(new AssemblyName(i)).Location)).Concat(references);
 #endif
@@ -110,12 +111,12 @@ namespace Rabbit.Rpc.ProxyGenerator.Utilitys
                                 AttributeArgument(
                                     LiteralExpression(
                                         SyntaxKind.StringLiteralExpression,
-                                        Literal(".NETFramework,Version=v4.5"))),
+                                        Literal(".NETFramework,Version=v4.7.2"))),
                                 Token(SyntaxKind.CommaToken),
                                 AttributeArgument(
                                     LiteralExpression(
                                         SyntaxKind.StringLiteralExpression,
-                                        Literal(".NET Framework 4.5")))
+                                        Literal(".NET Framework 4.7.2")))
                                 .WithNameEquals(
                                     NameEquals(
                                         IdentifierName("FrameworkDisplayName")))})))))
