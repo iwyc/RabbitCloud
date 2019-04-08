@@ -66,8 +66,8 @@ namespace Rabbit.Rpc.ClientGenerator
             var provider = services.BuildServiceProvider();
 
             var loggerFactory = provider.GetRequiredService<ILoggerFactory>();
-            loggerFactory
-                .AddConsole();
+            //loggerFactory
+            //    .AddConsole();
 
             Logger = loggerFactory.CreateLogger<Program>();
 

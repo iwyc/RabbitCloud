@@ -26,12 +26,6 @@ using Rabbit.Rpc.Transport.Codec.Implementation;
 using System;
 using System.Linq;
 
-#if !NET
-
-using Microsoft.Extensions.DependencyModel;
-using System.Reflection;
-
-#endif
 
 namespace Rabbit.Rpc
 {
@@ -289,7 +283,7 @@ namespace Rabbit.Rpc
             services.AddSingleton<IClrServiceEntryFactory, ClrServiceEntryFactory>();
             services.AddSingleton<IServiceEntryProvider>(provider =>
             {
-#if NET
+#if !NETCOREAPP
                 var assemblys = AppDomain.CurrentDomain.GetAssemblies();
 #else
                 var assemblys = DependencyContext.Default.RuntimeLibraries.SelectMany(i => i.GetDefaultAssemblyNames(DependencyContext.Default).Select(z => Assembly.Load(new AssemblyName(z.Name))));
