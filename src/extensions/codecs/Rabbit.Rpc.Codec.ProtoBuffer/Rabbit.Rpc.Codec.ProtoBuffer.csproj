@@ -5,7 +5,7 @@
     <Copyright>© RabbitHub. All rights reserved.</Copyright>
     <VersionPrefix>1.0.0-alpha1</VersionPrefix>
     <Authors>majian</Authors>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Rabbit.Rpc.Codec.ProtoBuffer</AssemblyName>
     <PackageId>Rabbit.Rpc.Codec.ProtoBuffer</PackageId>
     <PackageTags>RabbitHub;RPC</PackageTags>
