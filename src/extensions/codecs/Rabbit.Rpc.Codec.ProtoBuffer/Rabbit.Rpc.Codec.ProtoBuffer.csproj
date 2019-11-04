@@ -5,7 +5,7 @@
     <Copyright>© RabbitHub. All rights reserved.</Copyright>
     <VersionPrefix>1.0.0-alpha1</VersionPrefix>
     <Authors>majian</Authors>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>Rabbit.Rpc.Codec.ProtoBuffer</AssemblyName>
     <PackageId>Rabbit.Rpc.Codec.ProtoBuffer</PackageId>
     <PackageTags>RabbitHub;RPC</PackageTags>
@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Rabbit.Rpc\Rabbit.Rpc.csproj" />
-    <PackageReference Include="protobuf-net" Version="2.4.0" />
+    <PackageReference Include="protobuf-net" Version="2.4.4" />
   </ItemGroup>
 
 </Project>

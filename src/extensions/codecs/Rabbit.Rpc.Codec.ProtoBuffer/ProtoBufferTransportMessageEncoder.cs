@@ -7,7 +7,6 @@ namespace Rabbit.Rpc.Codec.ProtoBuffer
 {
     public class ProtoBufferTransportMessageEncoder : ITransportMessageEncoder
     {
-        #region Implementation of ITransportMessageEncoder
 
         public byte[] Encode(TransportMessage message)
         {
@@ -19,7 +18,5 @@ namespace Rabbit.Rpc.Codec.ProtoBuffer
 
             return SerializerUtilitys.Serialize(transportMessage);
         }
-
-        #endregion Implementation of ITransportMessageEncoder
     }
 }

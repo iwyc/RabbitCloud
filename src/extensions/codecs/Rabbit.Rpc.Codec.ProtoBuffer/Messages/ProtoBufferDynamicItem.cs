@@ -7,7 +7,6 @@ namespace Rabbit.Rpc.Codec.ProtoBuffer.Messages
     [ProtoContract]
     public class ProtoBufferDynamicItem
     {
-        #region Constructor
 
         public ProtoBufferDynamicItem()
         {
@@ -30,9 +29,6 @@ namespace Rabbit.Rpc.Codec.ProtoBuffer.Messages
             Content = SerializerUtilitys.Serialize(value);
         }
 
-        #endregion Constructor
-
-        #region Property
 
         [ProtoMember(1)]
         public string TypeName { get; set; }
@@ -40,9 +36,6 @@ namespace Rabbit.Rpc.Codec.ProtoBuffer.Messages
         [ProtoMember(2)]
         public byte[] Content { get; set; }
 
-        #endregion Property
-
-        #region Public Method
 
         public object Get()
         {
@@ -51,7 +44,5 @@ namespace Rabbit.Rpc.Codec.ProtoBuffer.Messages
 
             return SerializerUtilitys.Deserialize(Content, Type.GetType(TypeName));
         }
-
-        #endregion Public Method
     }
 }

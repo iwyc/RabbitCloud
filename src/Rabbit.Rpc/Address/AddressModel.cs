@@ -19,7 +19,7 @@ namespace Rabbit.Rpc.Address
         /// <returns>一个字符串。</returns>
         public abstract override string ToString();
 
-        #region Equality members
+       
 
         /// <summary>Determines whether the specified object is equal to the current object.</summary>
         /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
@@ -52,7 +52,5 @@ namespace Rabbit.Rpc.Address
         {
             return !Equals(model1, model2);
         }
-
-        #endregion Equality members
     }
 }

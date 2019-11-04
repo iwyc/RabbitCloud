@@ -54,8 +54,7 @@ namespace Performances.NetCoreApp.Client
                     }
                 }
 
-                serviceProvider.GetRequiredService<ILoggerFactory>()
-                    .AddConsole((c, l) => (int)l >= 3);
+               // serviceProvider.GetRequiredService<ILoggerFactory>() .AddConsole((c, l) => (int)l >= 3);
 
                 var serviceProxyGenerater = serviceProvider.GetRequiredService<IServiceProxyGenerater>();
                 var serviceProxyFactory = serviceProvider.GetRequiredService<IServiceProxyFactory>();

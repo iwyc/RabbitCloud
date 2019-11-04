@@ -11,24 +11,16 @@ namespace Rabbit.Rpc.ProxyGenerator.Implementation
     /// </summary>
     public abstract class ServiceProxyBase
     {
-        #region Field
 
         private readonly IRemoteInvokeService _remoteInvokeService;
         private readonly ITypeConvertibleService _typeConvertibleService;
 
-        #endregion Field
-
-        #region Constructor
 
         protected ServiceProxyBase(IRemoteInvokeService remoteInvokeService, ITypeConvertibleService typeConvertibleService)
         {
             _remoteInvokeService = remoteInvokeService;
             _typeConvertibleService = typeConvertibleService;
         }
-
-        #endregion Constructor
-
-        #region Protected Method
 
         /// <summary>
         /// 远程调用。
@@ -73,7 +65,5 @@ namespace Rabbit.Rpc.ProxyGenerator.Implementation
                 }
             });
         }
-
-        #endregion Protected Method
     }
 }

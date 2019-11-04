@@ -15,16 +15,11 @@ namespace Rabbit.Transport.DotNetty
 {
     public class DotNettyServerMessageListener : IMessageListener, IDisposable
     {
-        #region Field
-
         private readonly ILogger<DotNettyServerMessageListener> _logger;
         private readonly ITransportMessageDecoder _transportMessageDecoder;
         private readonly ITransportMessageEncoder _transportMessageEncoder;
         private IChannel _channel;
 
-        #endregion Field
-
-        #region Constructor
 
         public DotNettyServerMessageListener(ILogger<DotNettyServerMessageListener> logger, ITransportMessageCodecFactory codecFactory)
         {
@@ -33,9 +28,6 @@ namespace Rabbit.Transport.DotNetty
             _transportMessageDecoder = codecFactory.GetDecoder();
         }
 
-        #endregion Constructor
-
-        #region Implementation of IMessageListener
 
         public event ReceivedDelegate Received;
 
@@ -52,7 +44,6 @@ namespace Rabbit.Transport.DotNetty
             await Received(sender, message);
         }
 
-        #endregion Implementation of IMessageListener
 
         public async Task StartAsync(EndPoint endPoint)
         {
@@ -84,7 +75,6 @@ namespace Rabbit.Transport.DotNetty
                 _logger.LogDebug($"服务主机启动成功，监听地址：{endPoint}。");
         }
 
-        #region Implementation of IDisposable
 
         /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
         public void Dispose()
@@ -95,9 +85,6 @@ namespace Rabbit.Transport.DotNetty
             }).Wait();
         }
 
-        #endregion Implementation of IDisposable
-
-        #region Help Class
 
         private class ServerHandler : ChannelHandlerAdapter
         {
@@ -110,7 +97,6 @@ namespace Rabbit.Transport.DotNetty
                 _logger = logger;
             }
 
-            #region Overrides of ChannelHandlerAdapter
 
             public override void ChannelRead(IChannelHandlerContext context, object message)
             {
@@ -133,9 +119,6 @@ namespace Rabbit.Transport.DotNetty
                     _logger.LogError($"与服务器：{context.Channel.RemoteAddress}通信时发送了错误。", exception);
             }
 
-            #endregion Overrides of ChannelHandlerAdapter
         }
-
-        #endregion Help Class
     }
 }

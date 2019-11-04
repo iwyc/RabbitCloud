@@ -17,7 +17,7 @@ namespace Rabbit.Rpc.Logging
     {
         public static NullLogger Instance { get; } = new NullLogger();
 
-        #region Implementation of ILogger
+   
 
         /// <summary>Writes a log entry.</summary>
         /// <param name="logLevel">Entry will be written on this level.</param>
@@ -46,7 +46,5 @@ namespace Rabbit.Rpc.Logging
         {
             throw new NotImplementedException();
         }
-
-        #endregion Implementation of ILogger
     }
 }

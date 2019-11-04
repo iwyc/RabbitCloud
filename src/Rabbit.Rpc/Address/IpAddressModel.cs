@@ -7,7 +7,7 @@ namespace Rabbit.Rpc.Address
     /// </summary>
     public sealed class IpAddressModel : AddressModel
     {
-        #region Constructor
+      
 
         /// <summary>
         /// 初始化一个新的ip地址模型实例。
@@ -27,9 +27,7 @@ namespace Rabbit.Rpc.Address
             Port = port;
         }
 
-        #endregion Constructor
 
-        #region Property
 
         /// <summary>
         /// ip地址。
@@ -41,9 +39,7 @@ namespace Rabbit.Rpc.Address
         /// </summary>
         public int Port { get; set; }
 
-        #endregion Property
-
-        #region Overrides of AddressModel
+      
 
         /// <summary>
         /// 创建终结点。
@@ -61,6 +57,5 @@ namespace Rabbit.Rpc.Address
             return $"{Ip}:{Port}";
         }
 
-        #endregion Overrides of AddressModel
     }
 }

@@ -16,7 +16,6 @@ namespace Rabbit.Rpc.ProxyGenerator.Utilitys
 {
     public static class CompilationUtilitys
     {
-        #region Public Method
 
         public static MemoryStream CompileClientProxy(IEnumerable<SyntaxTree> trees, IEnumerable<MetadataReference> references, ILogger logger = null)
         {
@@ -64,9 +63,6 @@ namespace Rabbit.Rpc.ProxyGenerator.Utilitys
             return stream;
         }
 
-        #endregion Public Method
-
-        #region Private Method
 
         private static SyntaxTree GetAssemblyInfo(AssemblyInfo info)
         {
@@ -222,10 +218,6 @@ namespace Rabbit.Rpc.ProxyGenerator.Utilitys
                 .SyntaxTree;
         }
 
-        #endregion Private Method
-
-        #region Help Class
-
         public class AssemblyInfo
         {
             public string Title { get; set; }
@@ -250,7 +242,5 @@ namespace Rabbit.Rpc.ProxyGenerator.Utilitys
                 };
             }
         }
-
-        #endregion Help Class
     }
 }

@@ -4,15 +4,10 @@ namespace Rabbit.Rpc.Codec.ProtoBuffer
 {
     public class ProtoBufferTransportMessageCodecFactory : ITransportMessageCodecFactory
     {
-        #region Field
 
         private readonly ITransportMessageEncoder _transportMessageEncoder = new ProtoBufferTransportMessageEncoder();
         private readonly ITransportMessageDecoder _transportMessageDecoder = new ProtoBufferTransportMessageDecoder();
-
-        #endregion Field
-
-        #region Implementation of ITransportMessageCodecFactory
-
+               
         /// <summary>
         /// 获取编码器。
         /// </summary>
@@ -30,7 +25,5 @@ namespace Rabbit.Rpc.Codec.ProtoBuffer
         {
             return _transportMessageDecoder;
         }
-
-        #endregion Implementation of ITransportMessageCodecFactory
     }
 }

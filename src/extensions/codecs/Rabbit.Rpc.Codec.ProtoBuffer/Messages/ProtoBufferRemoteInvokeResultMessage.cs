@@ -6,7 +6,6 @@ namespace Rabbit.Rpc.Codec.ProtoBuffer.Messages
     [ProtoContract]
     public class ProtoBufferRemoteInvokeResultMessage
     {
-        #region Constructor
 
         public ProtoBufferRemoteInvokeResultMessage(RemoteInvokeResultMessage message)
         {
@@ -18,7 +17,6 @@ namespace Rabbit.Rpc.Codec.ProtoBuffer.Messages
         {
         }
 
-        #endregion Constructor
 
         /// <summary>
         /// 异常消息。

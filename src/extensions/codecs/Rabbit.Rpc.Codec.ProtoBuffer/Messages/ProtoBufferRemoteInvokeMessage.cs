@@ -8,8 +8,6 @@ namespace Rabbit.Rpc.Codec.ProtoBuffer.Messages
     [ProtoContract]
     public class ParameterItem
     {
-        #region Constructor
-
         public ParameterItem(KeyValuePair<string, object> item)
         {
             Key = item.Key;
@@ -20,7 +18,6 @@ namespace Rabbit.Rpc.Codec.ProtoBuffer.Messages
         {
         }
 
-        #endregion Constructor
 
         [ProtoMember(1)]
         public string Key { get; set; }

@@ -41,7 +41,6 @@ namespace Rabbit.Transport.DotNetty
             _channel = channel;
         }
 
-        #region Implementation of IDisposable
 
         /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
         public void Dispose()
@@ -51,10 +50,6 @@ namespace Rabbit.Transport.DotNetty
                 await _channel.DisconnectAsync();
             }).Wait();
         }
-
-        #endregion Implementation of IDisposable
-
-        #region Implementation of IMessageSender
 
         /// <summary>
         /// 发送消息。
@@ -77,8 +72,6 @@ namespace Rabbit.Transport.DotNetty
             var buffer = GetByteBuffer(message);
             await _channel.WriteAndFlushAsync(buffer);
         }
-
-        #endregion Implementation of IMessageSender
     }
 
     /// <summary>
@@ -93,7 +86,6 @@ namespace Rabbit.Transport.DotNetty
             _context = context;
         }
 
-        #region Implementation of IMessageSender
 
         /// <summary>
         /// 发送消息。
@@ -116,7 +108,5 @@ namespace Rabbit.Transport.DotNetty
             var buffer = GetByteBuffer(message);
             return _context.WriteAndFlushAsync(buffer);
         }
-
-        #endregion Implementation of IMessageSender
     }
 }

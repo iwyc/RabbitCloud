@@ -25,24 +25,17 @@ namespace Rabbit.Rpc.ProxyGenerator.Implementation
 {
     public class ServiceProxyGenerater : IServiceProxyGenerater
     {
-        #region Field
 
         private readonly IServiceIdGenerator _serviceIdGenerator;
         private readonly ILogger<ServiceProxyGenerater> _logger;
 
-        #endregion Field
-
-        #region Constructor
+       
 
         public ServiceProxyGenerater(IServiceIdGenerator serviceIdGenerator, ILogger<ServiceProxyGenerater> logger)
         {
             _serviceIdGenerator = serviceIdGenerator;
             _logger = logger;
         }
-
-        #endregion Constructor
-
-        #region Implementation of IServiceProxyGenerater
 
         /// <summary>
         /// 生成服务代理。
@@ -122,9 +115,6 @@ namespace Rabbit.Rpc.ProxyGenerator.Implementation
                 .NormalizeWhitespace().SyntaxTree;
         }
 
-        #endregion Implementation of IServiceProxyGenerater
-
-        #region Private Method
 
         private static QualifiedNameSyntax GetQualifiedNameSyntax(Type type)
         {
@@ -332,7 +322,5 @@ namespace Rabbit.Rpc.ProxyGenerator.Implementation
 
             return declaration;
         }
-
-        #endregion Private Method
     }
 }

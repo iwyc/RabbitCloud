@@ -14,7 +14,6 @@ namespace Rabbit.Transport.DotNetty.Adaper
             _transportMessageDecoder = transportMessageDecoder;
         }
 
-        #region Overrides of ChannelHandlerAdapter
 
         public override void ChannelRead(IChannelHandlerContext context, object message)
         {
@@ -25,7 +24,5 @@ namespace Rabbit.Transport.DotNetty.Adaper
             context.FireChannelRead(transportMessage);
             ReferenceCountUtil.Release(buffer);
         }
-
-        #endregion Overrides of ChannelHandlerAdapter
     }
 }

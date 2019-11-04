@@ -17,8 +17,6 @@ namespace Rabbit.Rpc.Coordinate.Zookeeper
     /// </summary>
     public class ZooKeeperServiceRouteManager : ServiceRouteManagerBase, IDisposable
     {
-        #region Field
-
         private ZooKeeper _zooKeeper;
         private readonly ZookeeperConfigInfo _configInfo;
         private readonly ISerializer<byte[]> _serializer;
@@ -27,9 +25,7 @@ namespace Rabbit.Rpc.Coordinate.Zookeeper
         private ServiceRoute[] _routes;
         private readonly ManualResetEvent _connectionWait = new ManualResetEvent(false);
 
-        #endregion Field
-
-        #region Constructor
+   
 
         public ZooKeeperServiceRouteManager(ZookeeperConfigInfo configInfo, ISerializer<byte[]> serializer,
             ISerializer<string> stringSerializer, IServiceRouteFactory serviceRouteFactory,
@@ -42,10 +38,6 @@ namespace Rabbit.Rpc.Coordinate.Zookeeper
             CreateZooKeeper().Wait();
             EnterRoutes().Wait();
         }
-
-        #endregion Constructor
-
-        #region Overrides of ServiceRouteManagerBase
 
         /// <summary>
         /// 获取所有可用的服务路由信息。
@@ -151,9 +143,6 @@ namespace Rabbit.Rpc.Coordinate.Zookeeper
                 _logger.LogInformation("服务路由添加成功。");
         }
 
-        #endregion Overrides of ServiceRouteManagerBase
-
-        #region Private Method
 
         private async Task CreateZooKeeper()
         {
@@ -339,9 +328,6 @@ namespace Rabbit.Rpc.Coordinate.Zookeeper
                 _logger.LogInformation("路由数据更新成功。");
         }
 
-        #endregion Private Method
-
-        #region Watcher Class
 
         protected class ReconnectionWatcher : Watcher
         {
@@ -354,7 +340,6 @@ namespace Rabbit.Rpc.Coordinate.Zookeeper
                 _disconnect = disconnect;
             }
 
-            #region Overrides of Watcher
 
             /// <summary>Processes the specified event.</summary>
             /// <param name="watchedEvent">The event.</param>
@@ -376,7 +361,6 @@ namespace Rabbit.Rpc.Coordinate.Zookeeper
 #endif
             }
 
-            #endregion Overrides of Watcher
         }
 
         protected abstract class WatcherBase : Watcher
@@ -417,7 +401,6 @@ namespace Rabbit.Rpc.Coordinate.Zookeeper
                 return this;
             }
 
-            #region Overrides of WatcherBase
 
             protected override async Task ProcessImpl(WatchedEvent watchedEvent)
             {
@@ -437,8 +420,6 @@ namespace Rabbit.Rpc.Coordinate.Zookeeper
                                 break;*/
                 }
             }
-
-            #endregion Overrides of WatcherBase
         }
 
         protected class ChildrenMonitorWatcher : WatcherBase
@@ -461,7 +442,6 @@ namespace Rabbit.Rpc.Coordinate.Zookeeper
                 return this;
             }
 
-            #region Overrides of WatcherBase
 
             protected override async Task ProcessImpl(WatchedEvent watchedEvent)
             {
@@ -502,12 +482,8 @@ namespace Rabbit.Rpc.Coordinate.Zookeeper
                 }
             }
 
-            #endregion Overrides of WatcherBase
         }
 
-        #endregion Watcher Class
-
-        #region Help Class
 
         /// <summary>
         /// zookeeper连接信息。
@@ -560,17 +536,11 @@ namespace Rabbit.Rpc.Coordinate.Zookeeper
             public string ChRoot { get; set; }
         }
 
-        #endregion Help Class
-
-        #region Implementation of IDisposable
-
         /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
         public void Dispose()
         {
             _connectionWait.Dispose();
             _zooKeeper.closeAsync().Wait();
         }
-
-        #endregion Implementation of IDisposable
     }
 }

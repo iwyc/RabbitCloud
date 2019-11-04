@@ -29,38 +29,6 @@ using System.Linq;
 
 namespace Rabbit.Rpc
 {
-    /// <summary>
-    /// 一个抽象的Rpc服务构建者。
-    /// </summary>
-    public interface IRpcBuilder
-    {
-        /// <summary>
-        /// 服务集合。
-        /// </summary>
-        IServiceCollection Services { get; }
-    }
-
-    /// <summary>
-    /// 默认的Rpc服务构建者。
-    /// </summary>
-    internal sealed class RpcBuilder : IRpcBuilder
-    {
-        public RpcBuilder(IServiceCollection services)
-        {
-            if (services == null)
-                throw new ArgumentNullException(nameof(services));
-            Services = services;
-        }
-
-        #region Implementation of IRpcBuilder
-
-        /// <summary>
-        /// 服务集合。
-        /// </summary>
-        public IServiceCollection Services { get; }
-
-        #endregion Implementation of IRpcBuilder
-    }
 
     public static class RpcServiceCollectionExtensions
     {
@@ -79,8 +47,6 @@ namespace Rabbit.Rpc
 
             return builder;
         }
-
-        #region RouteManager
 
         /// <summary>
         /// 设置服务路由管理者。
@@ -118,7 +84,6 @@ namespace Rabbit.Rpc
             return builder;
         }
 
-        #endregion RouteManager
 
         /// <summary>
         /// 设置共享文件路由管理者。
@@ -136,7 +101,6 @@ namespace Rabbit.Rpc
                 provider.GetRequiredService<ILogger<SharedFileServiceRouteManager>>()));
         }
 
-        #region AddressSelector
 
         /// <summary>
         /// 设置服务地址选择器。
@@ -177,7 +141,6 @@ namespace Rabbit.Rpc
             return builder;
         }
 
-        #endregion AddressSelector
 
         /// <summary>
         /// 使用轮询的地址选择器。
@@ -201,7 +164,6 @@ namespace Rabbit.Rpc
             return builder;
         }
 
-        #region Codec Factory
 
         /// <summary>
         /// 使用编解码器。
@@ -242,7 +204,6 @@ namespace Rabbit.Rpc
             return builder;
         }
 
-        #endregion Codec Factory
 
         /// <summary>
         /// 使用Json编解码器。

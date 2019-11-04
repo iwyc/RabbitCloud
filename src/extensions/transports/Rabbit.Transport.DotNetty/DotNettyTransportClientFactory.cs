@@ -23,8 +23,6 @@ namespace Rabbit.Transport.DotNetty
     /// </summary>
     public class DotNettyTransportClientFactory : ITransportClientFactory, IDisposable
     {
-        #region Field
-
         private readonly ITransportMessageEncoder _transportMessageEncoder;
         private readonly ITransportMessageDecoder _transportMessageDecoder;
         private readonly ILogger<DotNettyTransportClientFactory> _logger;
@@ -36,9 +34,6 @@ namespace Rabbit.Transport.DotNetty
         private static readonly AttributeKey<IMessageListener> messageListenerKey = AttributeKey<IMessageListener>.ValueOf(typeof(DotNettyTransportClientFactory), nameof(IMessageListener));
         private static readonly AttributeKey<EndPoint> origEndPointKey = AttributeKey<EndPoint>.ValueOf(typeof(DotNettyTransportClientFactory), nameof(EndPoint));
 
-        #endregion Field
-
-        #region Constructor
 
         public DotNettyTransportClientFactory(ITransportMessageCodecFactory codecFactory, ILogger<DotNettyTransportClientFactory> logger)
             : this(codecFactory, logger, null)
@@ -61,10 +56,6 @@ namespace Rabbit.Transport.DotNetty
                 pipeline.AddLast(new DefaultChannelHandler(this));
             }));
         }
-
-        #endregion Constructor
-
-        #region Implementation of ITransportClientFactory
 
         /// <summary>
         /// 创建客户端。
@@ -103,10 +94,6 @@ namespace Rabbit.Transport.DotNetty
             }
         }
 
-        #endregion Implementation of ITransportClientFactory
-
-        #region Implementation of IDisposable
-
         /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
         public void Dispose()
         {
@@ -116,7 +103,6 @@ namespace Rabbit.Transport.DotNetty
             }
         }
 
-        #endregion Implementation of IDisposable
 
         private static Bootstrap GetBootstrap()
         {
@@ -138,7 +124,6 @@ namespace Rabbit.Transport.DotNetty
                 this._factory = factory;
             }
 
-            #region Overrides of ChannelHandlerAdapter
 
             public override void ChannelInactive(IChannelHandlerContext context)
             {
@@ -153,8 +138,6 @@ namespace Rabbit.Transport.DotNetty
                 var messageSender = context.Channel.GetAttribute(messageSenderKey).Get();
                 messageListener.OnReceived(messageSender, transportMessage);
             }
-
-            #endregion Overrides of ChannelHandlerAdapter
         }
     }
 }

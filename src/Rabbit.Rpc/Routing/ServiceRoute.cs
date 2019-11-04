@@ -19,7 +19,6 @@ namespace Rabbit.Rpc.Routing
         /// </summary>
         public ServiceDescriptor ServiceDescriptor { get; set; }
 
-        #region Equality members
 
         /// <summary>Determines whether the specified object is equal to the current object.</summary>
         /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
@@ -55,7 +54,5 @@ namespace Rabbit.Rpc.Routing
         {
             return !Equals(model1, model2);
         }
-
-        #endregion Equality members
     }
 }
